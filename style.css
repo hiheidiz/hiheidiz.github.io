@@ -105,6 +105,18 @@ h1 {
     line-height: 1.6; /* Adjust this value as needed */
 }
 
+.basictext a{
+    color:#507dbc
+}
+
+.basictext a:hover{
+    color:#90BDEB
+}
+
+.basictext a:visited{
+    color:#E4AE7C
+
+}
 /* Button Styling */
 button {
     border: none;
