@@ -47,7 +47,7 @@ nav ul li {
     margin-top: 30px;
     margin-bottom: 10px;
     margin-right: 50px ;
-    margin-left: 50px;
+    margin-left: 200px;
 }
 
 nav ul li a {
@@ -57,10 +57,6 @@ nav ul li a {
 
 nav ul li a:hover {
     color: #04080f; /* Change text color */
-}
-/* Adding transition property to header for transform scaling on hover */
-h1 {
-    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .left-image {
