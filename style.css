@@ -37,7 +37,7 @@ nav {
     display: flex;
     margin: 0px auto 30px auto;
     justify-content: space-between;
-    padding: 20px 12%; /* Align with image margins */
+    padding: 20px 0%; /* Align with image margins */
     color: #507dbc;
 }
 
