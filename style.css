@@ -42,6 +42,11 @@ nav {
     flex-wrap: nowrap;
 }
 
+nav ul {
+    padding: 0;
+    margin: 0;
+}
+
 nav ul li {
     display: inline-block;
     list-style: none;
