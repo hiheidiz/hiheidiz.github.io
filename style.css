@@ -99,6 +99,7 @@ h1 {
 .basictext h2:hover{
     animation: bounce;
     animation-duration: 1s;
+    color:#507dbc
 }
 
 .basictext p {
