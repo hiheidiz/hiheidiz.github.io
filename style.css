@@ -29,10 +29,12 @@
 
 .header nav h1 {
     font-size: 2rem; /* Adjust as needed */
+    font-family: "Paytone One", sans-serif;
 }
 
 .header nav ul li a {
     font-size: 1.2rem; /* Adjust as needed */
+    font-family: "Paytone One", sans-serif;
     text-decoration: none;
     color: #507dbc;
     transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
