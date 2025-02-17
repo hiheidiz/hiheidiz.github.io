@@ -19,6 +19,7 @@ p {
 /* Header Styles */
 .header nav h1, .header nav ul li a {
     font-family: "Paytone One", sans-serif;
+    transition: opacity 0.3s ease-in-out; /* Smooth fade effect */
 }
 
 .header {
@@ -205,4 +206,21 @@ button {
     font-family: "Poppins", serif;
     font-weight: 400;
     font-style: normal;
+}
+
+.header nav h1::after {
+    content: "heyheyhey"; /* New text */
+    /* left: 0;
+    top: 0; */
+    width: 100%;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease-in-out; /* Smooth fade effect */
+}
+
+.header nav h1:hover {
+    opacity: 0; /* Fade out the original text */
+}
+
+.header nav h1:hover::after {
+    opacity: 1; /* Fade in new text */
 }
