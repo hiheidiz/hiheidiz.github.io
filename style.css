@@ -209,9 +209,10 @@ button {
 }
 
 .header nav h1::after {
-    content: "heyheyhey"; /* New text */
+    content: "  -  heyheyhey"; /* New text */
     /* left: 0;
     top: 0; */
+    font-size: smaller;
     width: 100%;
     opacity: 0; /* Hidden by default */
     transition: opacity 0.3s ease-in-out; /* Smooth fade effect */
