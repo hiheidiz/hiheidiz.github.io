@@ -9,7 +9,7 @@
 }
 
 body {
-    background-color: #dae3e5;
+    background-color: #E7F0F1;
 }
 
 p {
@@ -175,12 +175,12 @@ button {
 /* Carousel Item */
 .item {
     scroll-snap-align: center;
-    min-width: 200px;
-    height: auto;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 8px;
+    width: 100%; /* Ensures the image takes up the full width of its container */
+    height: auto; /* Maintains aspect ratio */
+    max-height: 200px; /* Adjust as needed */
+    object-fit: contain; /* Ensures the whole image fits within the given dimensions */
 }
+
 
 /* Animation Effects */
 .left:hover {
