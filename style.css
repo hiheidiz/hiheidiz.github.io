@@ -73,7 +73,8 @@ h1 {
 }
 
 .left-image:hover{
-    animation: headShake;
+    animation: tada;
+    animation-duration: 1s; /* don't forget to set a duration! */
 }
 
 
