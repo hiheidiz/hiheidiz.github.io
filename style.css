@@ -43,8 +43,11 @@ nav {
 }
 
 nav ul {
-    padding: 0;
-    margin: 0;
+    display: flex; /* Ensure the list stays in one row */
+    flex-wrap: nowrap; /* Prevent wrapping */
+    gap: 10px; /* Adjust spacing between list items */
+    max-width: 50%; /* Prevent it from being too wide */
+    justify-content: flex-end; /* Align properly */
 }
 
 nav ul li {
