@@ -72,6 +72,5 @@ h1 {
 
 .left-image {
     float: left;
-    margin-right: 20px;  /* Space between image and text */
-    width: 150px;  /* Adjust the image size as needed */
+    padding: 0 5%;
 }
