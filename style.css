@@ -1,3 +1,4 @@
+/* Import External Libraries */
 @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Paytone+One&family=Poppins&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 
@@ -16,16 +17,35 @@ p {
     font-family: "Poppins", sans-serif;
 }
 
-/* Header Styles */
-.header nav h1, .header nav ul li a {
+/* Typography & Font Styles */
+.paytone-one-regular {
     font-family: "Paytone One", sans-serif;
-    transition: opacity 0.3s ease-in-out; /* Smooth fade effect */
+    font-weight: 400;
+    font-style: normal;
 }
 
+.cedarville {
+    font-family: "Cedarville Cursive", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.poppins-regular {
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Header Styles */
 .header {
     width: 100%;
     height: 10vh;
     padding: 0;
+}
+
+.header nav h1, .header nav ul li a {
+    font-family: "Paytone One", sans-serif;
+    transition: opacity 0.3s ease-in-out; /* Smooth fade effect */
 }
 
 .header nav h1 {
@@ -39,7 +59,7 @@ p {
     transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
-/* Navigation */
+/* Navigation Styles */
 nav {
     width: 100%;
     display: flex;
@@ -72,19 +92,42 @@ nav ul li a:hover {
 }
 
 /* General Text Styling */
-h1 {
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.left {
-    display: flex;
-    margin: 0px 30px 0px 12%;
+.basictext {
+    font-family: "Poppins", sans-serif;
+    margin: 0 12%;
     padding: 0px;
-    color: #507dbc;
-    float: left;
+    color: #04080f;
 }
 
-.lefty {
+.basictext h2 {
+    font-family: "Paytone One", sans-serif;
+    color: #90BDEB;
+}
+
+.basictext h2:hover {
+    animation: bounce;
+    animation-duration: 1s;
+    color: #507dbc;
+}
+
+.basictext p {
+    line-height: 1.6; /* Adjust this value as needed */
+}
+
+.basictext a {
+    color: #507dbc;
+}
+
+.basictext a:hover {
+    color: #90BDEB;
+}
+
+.basictext a:visited {
+    color: #507dbc;
+}
+
+/* Icon Styling */
+.left, .lefty {
     display: flex;
     margin: 0px 30px 0px 12%;
     padding: 0px;
@@ -100,40 +143,6 @@ h1 {
     color: #507dbc;
 }
 
-.basictext {
-    font-family: "Poppins", sans-serif;
-    margin: 0 12%;
-    padding: 0px;
-    color: #04080f;
-}
-
-.basictext h2 {
-    font-family: "Paytone One", sans-serif;
-    color: #90BDEB;
-    
-}
-.basictext h2:hover{
-    animation: bounce;
-    animation-duration: 1s;
-    color:#507dbc
-}
-
-.basictext p {
-    line-height: 1.6; /* Adjust this value as needed */
-}
-
-.basictext a{
-    color:#507dbc
-}
-
-.basictext a:hover{
-    color:#90BDEB
-}
-
-.basictext a:visited{
-    color:#507dbc
-
-}
 /* Button Styling */
 button {
     border: none;
@@ -143,7 +152,7 @@ button {
     transition: all 0.3s ease-in-out;
 }
 
-/* Carousel Container */
+/* Carousel Styles */
 .container {
     width: 100%;
     height: 35vh;
@@ -153,7 +162,6 @@ button {
     background: none;
 }
 
-/* Carousel View */
 .carousel-view {
     display: flex;
     justify-content: space-between;
@@ -163,7 +171,6 @@ button {
     transition: all 0.25s ease-in;
 }
 
-/* Carousel Item List */
 .carousel-view .item-list {
     max-width: 950px;
     width: 70vw;
@@ -178,12 +185,10 @@ button {
     scroll-snap-type: x mandatory;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
 .item-list::-webkit-scrollbar {
-    display: none;
+    display: none; /* Hide scrollbar for Chrome, Safari and Opera */
 }
 
-/* Previous & Next Buttons */
 .prev-btn, .next-btn {
     font-size: 2rem;
     color: white;
@@ -202,15 +207,13 @@ button {
     background: #BCD7EB;
 }
 
-/* Carousel Item */
 .item {
     scroll-snap-align: center;
-    width: 100%; /* Ensures the image takes up the full width of its container */
-    height: auto; /* Maintains aspect ratio */
-    max-height: 200px; /* Adjust as needed */
-    object-fit: contain; /* Ensures the whole image fits within the given dimensions */
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
 }
-
 
 /* Animation Effects */
 .left:hover {
@@ -218,42 +221,38 @@ button {
     animation-duration: 1s;
 }
 
-/* Font Styles */
-.paytone-one-regular {
-    font-family: "Paytone One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
-.cedarville {
-    font-family: "Cedarville Cursive", serif;
-    font-weight: 400;
-    font-style: normal;
+/* Pulse Animation on Hover */
+.pulse-hover:hover {
+    animation: pulse 1s infinite;
 }
 
-.poppins-regular {
-    font-family: "Poppins", serif;
-    font-weight: 400;
-    font-style: normal;
+/* Footer Styles */
+.footer {
+    height: 100px;
+    /* Adjust the height of your footer */
 }
 
+/* Header Transition Text */
 .header nav h1::after {
     content: "  -  heyheyhey"; /* New text */
-    /* left: 0;
-    top: 0; */
     font-size: smaller;
     width: 100%;
     opacity: 0; /* Hidden by default */
-    transition: opacity 0.3s ease-in-out; /* Smooth fade effect */
+    transition: opacity 0.3s ease-in-out;
 }
-
-/* .header nav h1:hover {
-    opacity: 0; /* Fade out the original text */
 
 .header nav h1:hover::after {
     opacity: 1; /* Fade in new text */
 }
-
-.footer {
-    height: 100px; /* Adjust the height of your footer */
-  }
