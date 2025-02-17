@@ -9,6 +9,10 @@
     <body>
         <!-- Header will be loaded here dynamically -->
         <div id="header-placeholder"></div>
+        <div>
+            <img src="pic.png" alt="Image Description" width="300" height="300" class="left-image">
+        hellooooooooo
+        </div>
         <script>
             fetch("home_header.html")
                 .then(response => response.text())
@@ -17,7 +21,6 @@
                 })
                 .catch(error => console.error("Error loading header:", error));
         </script>             
-        <img src="pic.png" alt="Image Description" width="300" height="300" class="left-image">
-        hellooooooooo
+        
     </body>
 </html>
