@@ -1,6 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Paytone+One&family=Poppins&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
-
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 * {
     margin: 0;
     padding: 0;
@@ -69,7 +69,9 @@ h1 {
     float: left;
 }
 
-
+.left-image:hover{
+    animation: headShake;
+}
 
 
 .paytone-one-regular {
