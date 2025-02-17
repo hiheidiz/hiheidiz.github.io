@@ -67,7 +67,7 @@ h1 {
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.left-image {
+.left {
     display: flex;
     margin: 0px 30px 0px 12%;
     padding: 0px;
@@ -75,7 +75,21 @@ h1 {
     float: left;
 }
 
-.left-image:hover{
+.basictext {
+    font-family: "Poppins", sans-serif;
+    margin-left: 12%;
+    padding: 0px;
+    color: #04080f;
+}
+
+.basictext h2{
+    font-family: "Paytone One", sans-serif;
+    color: #507dbc
+}
+
+
+
+.left:hover{
     animation: tada;
     animation-duration: 1s;
 }
