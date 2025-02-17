@@ -231,9 +231,8 @@ button {
     transition: opacity 0.3s ease-in-out; /* Smooth fade effect */
 }
 
-.header nav h1:hover {
+/* .header nav h1:hover {
     opacity: 0; /* Fade out the original text */
-}
 
 .header nav h1:hover::after {
     opacity: 1; /* Fade in new text */
