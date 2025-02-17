@@ -237,3 +237,7 @@ button {
 .header nav h1:hover::after {
     opacity: 1; /* Fade in new text */
 }
+
+.footer {
+    height: 100px; /* Adjust the height of your footer */
+  }
