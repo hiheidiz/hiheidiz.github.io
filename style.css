@@ -1,22 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Paytone One", sans-serif;
+    background-color: #dae3e5;
+}
 
 .paytone-one-regular {
     font-family: "Paytone One", sans-serif;
     font-weight: 400;
     font-style: normal;
-  }
-  
-  .cedarville{
+}
+
+.cedarville {
     font-family: "Cedarville Cursive", serif;
     font-weight: 400;
     font-style: normal;
-  }  
+}
 
-.header{
+.header {
     width: 100%;
-    height:10vh;
-    padding:0 5%;
-
+    height: 10vh;
+    padding: 0 5%;
 }
 
 .header nav h1 {
@@ -27,7 +32,7 @@
     font-size: 1.2rem; /* Adjust as needed */
     text-decoration: none;
     color: #507dbc;
-    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out; 
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 nav ul li a:hover {
@@ -35,53 +40,34 @@ nav ul li a:hover {
     color: #04080f; /* Change text color */
 }
 
-nav{
+nav {
     width: 1200px;
     display: flex;
     margin: 0px auto;
     justify-content: space-between;
     padding: 20px;
-    color: #507dbc
+    color: #507dbc;
 }
 
-nav ul li{
+nav ul li {
     display: inline-block;
     list-style: none;
     margin: 10px 20px;
 }
-nav ul li a{
+
+nav ul li a {
     text-decoration: none;
-    color: #507dbc
+    color: #507dbc;
 }
 
-.container{
-    position: relative;
-    width: 1200px;
-    height: 300px;
-    margin: 20px auto;
-    /* background-color: #F3F3E0 */
+/* Adding transition property to header for transform scaling on hover */
+h1 {
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.container .box{
-    position: relative;
-    width: calc(400px - 30px);
-    height: calc(300px - 30px);
-    background: #bbd1ea;
-    float: left;
-    margin: 15px;
-    box-sizing: border-box;
-    overflow: hidden;
-    border-radius: 10px;
-    padding: 20px;
-    color:#3A6D8C;
-    text-align: center;
+/* Make sure the hover transform is applied */
+h1:hover {
+    transform: scale(1.2);  /* Apply scaling on hover */
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family:"Paytone One", serif;
-    background-color: #dae3e5;
-    
-}
+.c
