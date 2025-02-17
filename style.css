@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Paytone+One&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -35,7 +38,7 @@
     transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
-nav ul li a:hover {
+ul li a:hover {
     transform: scale(1.1); /* Slightly increase size */
     color: #04080f; /* Change text color */
 }
@@ -64,12 +67,6 @@ nav ul li a {
 h1 {
     transition: transform 0.3s ease, color 0.3s ease;
 }
-
-/* Make sure the hover transform is applied */
-h1:hover {
-    transform: scale(1.2);  /* Apply scaling on hover */
-}
-
 
 .left-image {
     float: left;
