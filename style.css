@@ -5,9 +5,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
     background-color: #dae3e5;
 }
+
+.p {
+    font-family: "Poppins", sans-serif;
+}
+
+.header nav h1, .header nav ul li a {
+    font-family: "Paytone One", sans-serif;
+}
+
 .header {
     width: 100%;
     height: 10vh;
@@ -16,12 +24,10 @@
 
 .header nav h1 {
     font-size: 2rem; /* Adjust as needed */
-    font-family: "Paytone One", sans-serif;
 }
 
 .header nav ul li a {
     font-size: 1.2rem; /* Adjust as needed */
-    font-family: "Paytone One", sans-serif;
     text-decoration: none;
     color: #507dbc;
     transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
