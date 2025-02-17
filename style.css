@@ -71,6 +71,9 @@ h1 {
 }
 
 .left-image {
+    display: flex;
+    margin: 0px 15%;
+    padding: 0px;
+    color: #507dbc;
     float: left;
-    padding: 0 5%;
 }
