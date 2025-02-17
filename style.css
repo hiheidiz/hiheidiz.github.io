@@ -39,12 +39,6 @@
     color: #507dbc;
     transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
 }
-
-.header ul li a:hover {
-    transform: scale(1.1); /* Slightly increase size */
-    color: #04080f; /* Change text color */
-}
-
 nav {
     width: 1200px;
     display: flex;
@@ -65,6 +59,10 @@ nav ul li a {
     color: #507dbc;
 }
 
+nav ul li a:hover {
+    transform: scale(1.1); /* Slightly increase size */
+    color: #04080f; /* Change text color */
+}
 /* Adding transition property to header for transform scaling on hover */
 h1 {
     transition: transform 0.3s ease, color 0.3s ease;
