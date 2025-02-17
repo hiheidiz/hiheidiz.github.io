@@ -2,21 +2,20 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name ="viewport" content="width=device-width, intiail-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div class="header">
-            <nav>
-                <h1>Heidi Zhang</h1>
-                <ul>
-                    <li><a href="./"><b>Main</b></a></li>
-                    <li><a href="./art"><b>Art</b></a></li>
-                    <li><a href="./music"><b>Music</b></a></li>
-                    <li><a href="#"><b>Resume</b></a></li>
-                    <li><a href="./blog"><u><b>Blog</b></u></a></li>
-                </ul>
-            </nav>
-        </div>        
+        <!-- Header will be loaded here dynamically -->
+        <div id="header-placeholder"></div>
+
+        <script>
+            fetch("header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("header-placeholder").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading header:", error));
+        </script>             
     </body>
 </html>
