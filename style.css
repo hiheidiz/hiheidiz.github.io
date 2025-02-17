@@ -40,7 +40,7 @@
     transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
-ul li a:hover {
+.header ul li a:hover {
     transform: scale(1.1); /* Slightly increase size */
     color: #04080f; /* Change text color */
 }
