@@ -39,6 +39,7 @@ nav {
     justify-content: space-between;
     padding: 20px 8%; /* Align with image margins */
     color: #507dbc;
+    flex-wrap: nowrap;
 }
 
 nav ul li {
