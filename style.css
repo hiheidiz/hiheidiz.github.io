@@ -48,7 +48,7 @@ ul li a:hover {
 nav {
     width: 1200px;
     display: flex;
-    margin: 0px auto;
+    margin: 0px auto 30px auto;
     justify-content: space-between;
     padding: 20px;
     color: #507dbc;
