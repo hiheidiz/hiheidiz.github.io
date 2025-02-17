@@ -14,6 +14,14 @@
 
 }
 
+.header h1 {
+    font-size: 1.5rem; /* Adjust as needed */
+}
+
+.header nav ul li a {
+    font-size: 1.2rem; /* Adjust as needed */
+}
+
 nav{
     width: 1200px;
     display: flex;
