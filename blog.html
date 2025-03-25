@@ -16,16 +16,29 @@
       gtag('config', 'G-33V0LP9GDJ');
     </script>
     <body>
-        <!-- Header will be loaded here dynamically -->
         <div id="header-placeholder"></div>
-        
-        <div class="blog-container">
-            <h1>Blog Posts</h1>
-            <div id="blog-posts"></div>
+        <br>
+        <div class="basictext">
+            <h2>Welcome to my blog!</h2>
+            <br>
+            <p>I write very occasionally! Usually when I am very sad, but sometimes when I am very happy. Also, very little of it should be viewable to the public. However, I'm trying to start writing more -- you can check out <a href="https://mitadmissions.org/blogs/entry/guest-blog-yiapping/">my post</a> on the MIT Admissions website!</p>
         </div>
+        <div class="basictext">
+            <br>
+            <h2>Blog Posts</h2>
+            <p><br> </p>
+        </div>
+        <div id="blog-posts"></div>
+
 
         <div class="footer"></div>
 
         <script src="blog.js"></script>
+        <script>fetch("header.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("header-placeholder").innerHTML = data;
+            })
+            .catch(error => console.error("Error loading header:", error));</script>
     </body>
 </html>
