@@ -256,3 +256,76 @@ button {
 .header nav h1:hover::after {
     opacity: 1; /* Fade in new text */
 }
+
+/* Blog Post Styles - Integrated with Existing Design */
+.blog-container {
+    margin: 0 12%;
+}
+
+.blog-container h1 {
+    font-family: "Paytone One", sans-serif;
+    color: #90BDEB;
+    margin-bottom: 20px;
+}
+
+.blog-post {
+    background-color: transparent;
+    margin-bottom: 30px;
+    padding: 0;
+}
+
+.blog-post h2 {
+    font-family: "Paytone One", sans-serif;
+    color: #90BDEB;
+    margin-bottom: 10px;
+}
+
+.blog-post h2:hover {
+    animation: bounce;
+    animation-duration: 1s;
+    color: #507dbc;
+}
+
+.post-date {
+    font-family: "Poppins", sans-serif;
+    color: #507dbc;
+    margin-bottom: 15px;
+}
+
+.blog-post-content {
+    font-family: "Poppins", sans-serif;
+    color: #04080f;
+    line-height: 1.6;
+}
+
+.blog-post-content p {
+    margin-bottom: 15px;
+}
+
+.blog-post-content blockquote {
+    border-left: 4px solid #90BDEB;
+    padding-left: 15px;
+    font-style: italic;
+    color: #507dbc;
+    margin: 20px 0;
+}
+
+.blog-post-content h3 {
+    font-family: "Paytone One", sans-serif;
+    color: #90BDEB;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.read-more {
+    display: inline-block;
+    font-family: "Poppins", sans-serif;
+    color: #507dbc;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+}
+
+.read-more:hover {
+    color: #90BDEB;
+}

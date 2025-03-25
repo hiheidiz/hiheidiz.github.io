@@ -7,28 +7,25 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     </head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-33V0LP9GDJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-33V0LP9GDJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-33V0LP9GDJ');
-</script>
+      gtag('config', 'G-33V0LP9GDJ');
+    </script>
     <body>
         <!-- Header will be loaded here dynamically -->
         <div id="header-placeholder"></div>
-        <div class="basictext">
-            <p><br>&nbsp;</p>
-            <p>I write very occasionally! Usually when I am very sad, but sometimes when I am very happy. Also, very little of it should be viewable to the public. However, I'm trying to start writing more -- you can check out <a href="https://mitadmissions.org/blogs/entry/guest-blog-yiapping/">my post</a> on the MIT Admissions website!</p>
+        
+        <div class="blog-container">
+            <h1>Blog Posts</h1>
+            <div id="blog-posts"></div>
         </div>
-        <script>
-            fetch("header.html")
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById("header-placeholder").innerHTML = data;
-                })
-                .catch(error => console.error("Error loading header:", error));
-        </script>             
+
+        <div class="footer"></div>
+
+        <script src="blog.js"></script>
     </body>
 </html>
