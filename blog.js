@@ -39,7 +39,7 @@ async function loadBlogPosts() {
             postElement.innerHTML = `
                 <h2>${post.title}</h2>
                 <p>${post.date}</p>
-                <div>${post.excerpt}</div>
+                <p>${post.excerpt}</p>
                 <p>${readMoreLink}</p> 
             `;
              
