@@ -34,7 +34,7 @@ async function loadBlogPosts() {
             const postElement = document.createElement('div');
             const slug = post.title.toLowerCase().replace(/\s+/g, '-'); // Convert title to URL slug
             const readMoreLink = `<a href="/blogs/${slug}" class="read-more">Read More</a>`;
-            postElement.classList.add('blog-post');
+            postElement.classList.add('basictext');
              
             postElement.innerHTML = `
                 <h2>${post.title}</h2>

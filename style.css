@@ -326,10 +326,3 @@ button {
 .read-more:hover {
     color: #90BDEB;
 }
-
-/* Blog Post Styles - Integrated with Existing Design */
-#blog-posts {
-    width: 76%;  /* Matches your 12% margin on both sides */
-    margin: 0 auto;  /* Center the container */
-    max-width: 800px;  /* Optional: prevent extremely wide posts on large screens */
-}
