@@ -319,7 +319,6 @@ button {
     font-family: "Poppins", sans-serif;
     color: #507dbc;
     text-decoration: none;
-    font-weight: bold;
     transition: color 0.2s ease-in-out;
 }
 
