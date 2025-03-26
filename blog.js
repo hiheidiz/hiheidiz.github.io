@@ -31,18 +31,20 @@ async function loadBlogPosts() {
          
         // Create and append blog post elements
         for (const post of blogPosts) {
+            console.log("Adding post:", post.title);
             const postElement = document.createElement('div');
             const slug = post.title.toLowerCase().replace(/\s+/g, '-'); // Convert title to URL slug
-            const readMoreLink = `<a href="/blogs/${slug}" class="read-more">Read More</a>`;
+            const readMoreLink = `<a href="/blogs/${slug}" class="read-more" style="color: black;">read---></a>`;
             postElement.classList.add('basictext');
              
             postElement.innerHTML = `
                 <h2>${post.title}</h2>
                 <p style="color: #507DBC;">${post.date + ": " + post.excerpt}</p>
                 <p>${readMoreLink}</p> 
+                <br>
             `;
              
-            postsContainer.appendChild(postElement);
+            postsContainer.prepend(postElement);
         }
          
         // If no posts were loaded, show a message
