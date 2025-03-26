@@ -1,36 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Blog Post</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     </head>
     <body>
         <div id="header-placeholder"></div>
-        <div class="basictext">
-            <p><br>I have a (mostly inactive) Instagram account <a href="https://www.instagram.com/587hz/">@587hz</a>. </p>
-    
-            <p>Recently, I've been reflecting on my journey through technology and personal growth. It's fascinating how small decisions can lead to unexpected paths.</p>
-    
-            <p>When I first started learning to code, I was intimidated by the complexity. Lines of syntax seemed like an incomprehensible language, and every tutorial felt like solving a cryptic puzzle. But something kept drawing me back - a mix of curiosity and the promise of creating something from nothing.</p>
-    
-            <h3>The Learning Curve</h3>
-    
-            <p>My breakthrough came not from a grand moment of understanding, but from countless small victories. The first time I successfully debugged a script. The moment a webpage I coded actually rendered correctly. These weren't just technical achievements; they were personal milestones.</p>
-    
-            <blockquote>
-                "In programming, as in life, persistence is more important than perfection." 
-            </blockquote>
-    
-            <p>I've learned that technology is less about knowing everything and more about being comfortable with continuous learning. Each project is a new adventure, each bug a puzzle waiting to be solved.</p>
-    
-            <h3>Looking Forward</h3>
-    
-            <p>My current fascination is with building intuitive systems that make complex tasks simple. Whether it's a blog template system like the one I'm developing or a more complex web application, the goal remains the same: create something that works smoothly and brings a bit of joy to users.</p>
-    
-            <p>To anyone reading this who might be hesitant to start their coding journey - take that first step. The path is challenging, but incredibly rewarding.</p>
+        <br>
+        <div class="blog-container">
+            <div class="blog-post">
+                <h2>Reflections on Technology and Growth</h2>
+                <p class="post-date">March 25, 2025</p>
+                
+                <div class="blog-post-content">
+                    <p>I have a (mostly inactive) Instagram account <a href="https://www.instagram.com/587hz/">@587hz</a>.</p>
+                    
+                    <p>Recently, I've been reflecting on my journey through technology and personal growth. It's fascinating how small decisions can lead to unexpected paths.</p>
+                    
+                    <p>When I first started learning to code, I was intimidated by the complexity. Lines of syntax seemed like an incomprehensible language, and every tutorial felt like solving a cryptic puzzle. But something kept drawing me back—a mix of curiosity and the promise of creating something from nothing.</p>
+                    
+                    <h3>The Learning Curve</h3>
+                    
+                    <p>My breakthrough came not from a grand moment of understanding, but from countless small victories. The first time I successfully debugged a script. The moment a webpage I coded actually rendered correctly. These weren't just technical achievements; they were personal milestones.</p>
+                    
+                    <blockquote>
+                        "In programming, as in life, persistence is more important than perfection."
+                    </blockquote>
+                    
+                    <p>I've learned that technology is less about knowing everything and more about being comfortable with continuous learning. Each project is a new adventure, each bug a puzzle waiting to be solved.</p>
+                    
+                    <h3>Looking Forward</h3>
+                    
+                    <p>My current fascination is with building intuitive systems that make complex tasks simple. Whether it's a blog template system like the one I'm developing or a more complex web application, the goal remains the same: create something that works smoothly and brings a bit of joy to users.</p>
+                    
+                    <p>To anyone reading this who might be hesitant to start their coding journey—take that first step. The path is challenging but incredibly rewarding.</p>
+                </div>
+            </div>
         </div>
+        
         <script>
             fetch("header.html")
                 .then(response => response.text())
@@ -41,4 +51,3 @@
         </script>
     </body>
 </html>
-
