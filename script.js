@@ -104,7 +104,39 @@
     });
   }
 
-  // HTML includes (for modular sections like Art)
+  // Delegated handler: ensures the dropdown works even if the music section
+  // is injected after initial page load.
+  document.addEventListener("change", (e) => {
+    const target = e.target instanceof Element ? e.target : null;
+    const select = target?.closest?.("[data-audio-select]");
+    if (!select) return;
+
+    const picker = select.closest(".music-audio-picker") || document;
+    const player = picker.querySelector("[data-audio-player]");
+    if (!player) return;
+
+    if (!player.dataset.audioDebugAttached) {
+      player.dataset.audioDebugAttached = "1";
+      player.addEventListener("error", () => {
+        console.log("Audio error:", player.error, "src:", player.src);
+      });
+    }
+
+    const src = select.value;
+    if (!src) {
+      player.removeAttribute("src");
+      player.load();
+      return;
+    }
+
+    player.src = src;
+    player.load();
+    player.currentTime = 0;
+    player.play().catch(() => {
+      // If the browser blocks autoplay, user can press play manually.
+    });
+  });
+
   async function loadHtmlIncludes() {
     const nodes = Array.from(document.querySelectorAll("[data-include-html]"));
     await Promise.all(
@@ -118,6 +150,7 @@
         if (el.id === "art") {
           window.__art?.initArtCarousel?.();
         }
+        // Music audio picker is handled by delegated JS above.
       })
     );
   }

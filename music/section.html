@@ -1,9 +1,74 @@
-<div
-  style="position: relative; width: 100%; max-width: 416px; height: 0; padding-top: 40%; padding-bottom: 0; overflow: hidden; border-radius: 8px; will-change: transform; margin: 1.6em auto 0.9em auto;"
->
-  <iframe
-    loading="lazy"
-    style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0; margin: 0;"
-    src="https://www.canva.com/design/DAHFBuxTkhM/paIjtc1-KSqeSizuvoeZkA/view?embed"
-  ></iframe>
+<div class="music-section">
+  <div class="music-layout">
+    <div class="music-side music-left">
+      <p>
+        I sometimes post covers/mashups on <a href="https://www.tiktok.com/@587.hz">tiktok</a>
+      </p>
+      <p>
+        - dernière danse x phoenix
+      </p>
+      <p>
+        - vodka cranberry x ajab si (this one is bad)
+      </p>
+      <p>
+        - everything matters x 笼
+      </p>
+      <br>
+      <p>
+        I also sing with the <a href="https://www.instagram.com/mitohms/">mit ohms</a> (5 semesters) and next sing (3 semesters)
+      </p>
+      <br>
+      <p>I listen to a lot of music too - <a href="https://open.spotify.com/user/ljxwd4n7bbzgksl5m7ivovxsq">spotify</a> </p>
+    </div>
+
+    <div class="music-center">
+      <div class="music-embed" aria-label="Canva design embed">
+        <iframe
+          loading="lazy"
+          src="https://www.canva.com/design/DAHFBuxTkhM/paIjtc1-KSqeSizuvoeZkA/view?embed"
+        ></iframe>
+      </div>
+      <br>
+      <div class="music-links" aria-label="Music links">
+        <a href="https://www.discogs.com/user/587hz/collection?header=1" target="_blank" rel="noopener">my record collection</a>
+        <!-- <a href="https://open.spotify.com/" target="_blank" rel="noopener">spotify</a></center> -->
+      </div>
+    </div>
+
+    <div class="music-side music-right">
+      <p>
+         I occasionally arrange things
+      </p>
+      <br>
+      <p>
+        - good in goodbye x can't catch me now
+      </p>
+      <p>
+        - blue x BLUE x little blue x i'm blue
+      </p>
+      <p>
+        - inside out theme song
+      </p>
+
+
+      <div class="music-audio-picker">
+        <label for="music-audio-select">Select audio file</label>
+        <select id="music-audio-select" data-audio-select>
+          <option value="">-- choose a track --</option>
+          <option
+            value="music/mp3s/Can't Catch me Now X Good in Goodbye.mp3"
+          >
+            Can't Catch me Now X Good in Goodbye
+          </option>
+          <option value="music/mp3s/blue.mp3">blue</option>
+          <option value="music/mp3s/INSIDE OUT.mp3">INSIDE OUT</option>
+        </select>
+        <audio
+          controls
+          preload="auto"
+          data-audio-player
+        ></audio>
+      </div>
+    </div>
+  </div>
 </div>
