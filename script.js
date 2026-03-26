@@ -103,5 +103,25 @@
       syncLabel();
     });
   }
+
+  // HTML includes (for modular sections like Art)
+  async function loadHtmlIncludes() {
+    const nodes = Array.from(document.querySelectorAll("[data-include-html]"));
+    await Promise.all(
+      nodes.map(async (el) => {
+        const url = el.getAttribute("data-include-html");
+        if (!url) return;
+        const res = await fetch(url, { cache: "no-cache" });
+        if (!res.ok) return;
+        el.innerHTML = await res.text();
+        // Run any section initializers after injection.
+        if (el.id === "art") {
+          window.__art?.initArtCarousel?.();
+        }
+      })
+    );
+  }
+
+  loadHtmlIncludes();
 })();
 

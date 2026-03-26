@@ -12,6 +12,7 @@
     />
     <link rel="stylesheet" href="./styles.css" />
     <script defer src="./stars-bg.js"></script>
+    <script defer src="./art/art.js"></script>
     <script defer src="./script.js"></script>
   </head>
   <body>
@@ -51,12 +52,13 @@
           </div>
         </section>
 
-        <section id="art" class="panel" role="tabpanel" aria-labelledby="tab-art">
-          <div class="panel-inner">
-            <h1 class="welcome-title">Welcome to my "Art/Design" page</h1>
-            <!-- Placeholder: art gallery frames go here later -->
-          </div>
-        </section>
+        <section
+          id="art"
+          class="panel art-panel"
+          role="tabpanel"
+          aria-labelledby="tab-art"
+          data-include-html="art/section.html"
+        ></section>
 
         <section
           id="music"
@@ -65,8 +67,8 @@
           aria-labelledby="tab-music"
         >
           <div class="panel-inner">
-            <h1 class="welcome-title">Welcome to my "Music" page</h1>
-            <!-- Placeholder: album links + audio players go here later -->
+            <center><h1 class="welcome-title">currently listening to:</h1></center>
+            <div data-include-html="music/section.html"></div>
           </div>
         </section>
 
