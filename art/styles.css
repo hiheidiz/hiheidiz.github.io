@@ -162,7 +162,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: min(72vw, 760px);
+  width: min(72vw, 640px);
   max-height: min(80vh, 640px);
   overflow-y: auto;
 }
