@@ -1,0 +1,7 @@
+#home {
+  background:
+    radial-gradient(circle at 16% 22%, rgba(0, 13, 27, 0.2), transparent 50%),
+    radial-gradient(circle at 82% 70%, rgba(8, 188, 179, 0.2), transparent 40%),
+    var(--panel-bg);
+}
+

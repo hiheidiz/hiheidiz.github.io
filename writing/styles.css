@@ -1,0 +1,7 @@
+#writing {
+  background:
+    radial-gradient(circle at 18% 30%, rgba(120, 150, 230, 0.2), transparent 42%),
+    radial-gradient(circle at 76% 78%, rgba(200, 220, 255, 0.2), transparent 48%),
+    var(--panel-bg);
+}
+

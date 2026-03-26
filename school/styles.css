@@ -1,0 +1,7 @@
+#school {
+  background:
+    radial-gradient(circle at 20% 18%, rgba(95, 130, 210, 0.12), transparent 42%),
+    radial-gradient(circle at 80% 74%, rgba(145, 189, 235, 0.22), transparent 38%),
+    var(--panel-bg);
+}
+

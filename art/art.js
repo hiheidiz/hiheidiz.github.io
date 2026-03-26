@@ -14,9 +14,8 @@
     let dragging = false;
     let lastX = 0;
     let activePointerId = null;
-    let keyAnimRaf = null;
     let keysRaf = null;
-    let heldDir = 0; // -1 = right, +1 = left (matches our inverted rotation)
+    let heldDir = 0;
 
     function setAngle(deg) {
       angle = deg;
@@ -34,7 +33,7 @@
       heldDir = dir;
       if (keysRaf != null) return;
 
-      const speedDegPerSec = 140; // tweak for faster/slower hold-spin
+      const speedDegPerSec = 140;
       let last = performance.now();
 
       const tick = (now) => {
@@ -52,8 +51,6 @@
     }
 
     function updateItemScales() {
-      // Exaggerate “inside the ring” sizing: biggest near left/right edges (~±90deg).
-      // We approximate each item's relative angle = (itemIndex * step + angle).
       const step = 360 / count;
       for (let idx = 0; idx < items.length; idx++) {
         const el = items[idx];
@@ -61,15 +58,15 @@
         const i = iRaw ? Number(iRaw) : idx;
         const relDeg = i * step + angle;
         const rad = (relDeg * Math.PI) / 180;
-        // |sin| peaks at 90deg (sides), 0 at 0/180 (front/back).
         const side = Math.abs(Math.sin(rad));
-        const scale = 0.9 + 0.55 * Math.pow(side, 1.6); // more dramatic near sides
+        const scale = 0.9 + 0.55 * Math.pow(side, 1.6);
         el.style.setProperty("--art-item-scale", scale.toFixed(3));
       }
     }
 
     function onPointerDown(e) {
       if (e.button !== undefined && e.button !== 0) return;
+      if (e.target instanceof Element && e.target.closest("[data-open-modal]")) return;
       dragging = true;
       lastX = e.clientX;
       activePointerId = e.pointerId;
@@ -87,7 +84,6 @@
       if (!dragging || e.pointerId !== activePointerId) return;
       const dx = e.clientX - lastX;
       lastX = e.clientX;
-      // Invert direction so dragging feels reversed.
       setAngle(angle - dx * 0.45);
     }
 
@@ -103,10 +99,7 @@
     viewport.addEventListener("pointercancel", endDrag);
 
     viewport.addEventListener("keydown", (e) => {
-      if (e.repeat) {
-        // holding the key will still generate repeats in some browsers;
-        // we ignore and let our RAF loop run.
-      }
+      if (e.repeat) {}
       if (e.key === "ArrowLeft") {
         e.preventDefault();
         startKeySpin(+1);
@@ -121,14 +114,46 @@
       if (e.key === "ArrowRight" && heldDir === -1) stopKeySpin();
     });
 
-    // If focus leaves the viewport, stop spinning.
     viewport.addEventListener("blur", stopKeySpin);
+
+    // Clicks inside the 3D preserve-3d context don't bubble to document,
+    // so we catch modal triggers directly at the viewport level.
+    let dragDistance = 0;
+    viewport.addEventListener("pointerdown", () => { dragDistance = 0; }, true);
+    viewport.addEventListener("pointermove", () => { dragDistance++; }, true);
+
+    viewport.addEventListener("click", (e) => {
+      if (dragDistance > 3) return;
+      const trigger = e.target instanceof Element && e.target.closest("[data-open-modal]");
+      if (!trigger) return;
+
+      const projectId = trigger.getAttribute("data-open-modal");
+      if (!projectId) return;
+
+      const modal = document.getElementById("art-modal-overlay");
+      if (!modal) return;
+
+      const contentEl = modal.querySelector(".art-modal-content");
+      if (contentEl) {
+        contentEl.innerHTML = "<p style='text-align:center;padding:2rem;color:var(--muted)'>Loading…</p>";
+      }
+
+      modal.style.setProperty("--animate-duration", "0.5s");
+      modal.classList.add("is-open", "animate__animated", "animate__fadeIn");
+      modal.classList.remove("animate__fadeOut");
+      modal.setAttribute("aria-hidden", "false");
+
+      if (contentEl) {
+        fetch(`artprojects/${projectId}/index.html`, { cache: "no-cache" })
+          .then((res) => (res.ok ? res.text() : Promise.reject(res.status)))
+          .then((html) => { contentEl.innerHTML = html; })
+          .catch(() => { contentEl.innerHTML = "<p style='text-align:center;padding:2rem;color:#f87171'>Failed to load project.</p>"; });
+      }
+    });
 
     setAngle(0);
   }
 
-  // Expose for the main loader (after injecting HTML).
   window.__art = window.__art || {};
   window.__art.initArtCarousel = initArtCarousel;
 })();
-

@@ -23,34 +23,8 @@
           class="panel is-active"
           role="tabpanel"
           aria-labelledby="tab-home"
-        >
-          <div class="panel-inner home-panel-inner">
-            <img
-              class="home-headshot"
-              src="assets/headshot.jpg"
-              width="440"
-              height="440"
-              alt="Heidi Zhang"
-              decoding="async"
-            />
-            <div class="home-copy">
-              <br>
-              <h1 class="welcome-title">hi! my name is Heidi!</h1>
-              <p>
-                I'm a junior (co'27) at MIT studying Math and CS with a minor
-                in Design.
-              </p>
-              <p>This website mostly contains art and other hobbies, but there's a little bit about school too I guess.</p>
-              <p>
-                My email is
-                <a href="mailto:heidiz@mit.edu">heidiz@mit.edu</a>. Fun fact:
-                you can also reach me at
-                <a href="mailto:heidi@mit.edu">heidi@mit.edu</a>:D
-              </p>
-              <!-- Placeholder: album wall / virtual album wall goes here later -->
-            </div>
-          </div>
-        </section>
+          data-include-html="home/section.html"
+        ></section>
 
         <section
           id="art"
@@ -65,48 +39,32 @@
           class="panel"
           role="tabpanel"
           aria-labelledby="tab-music"
-        >
-          <div class="panel-inner">
-            <center><h1 class="welcome-title">currently listening to:</h1></center>
-            <div data-include-html="music/section.html"></div>
-          </div>
-        </section>
+          data-include-html="music/section.html"
+        ></section>
 
         <section
           id="writing"
           class="panel"
           role="tabpanel"
           aria-labelledby="tab-writing"
-        >
-          <div class="panel-inner">
-            <h1 class="welcome-title">Welcome to my "Writing" page</h1>
-            <!-- Placeholder: blog cards / writing links go here later -->
-          </div>
-        </section>
+          data-include-html="writing/section.html"
+        ></section>
 
         <section
           id="scioly"
           class="panel"
           role="tabpanel"
           aria-labelledby="tab-scioly"
-        >
-          <div class="panel-inner">
-            <h1 class="welcome-title">Welcome to my "SciOly" page</h1>
-            <!-- Placeholder: rocks/minerals scrapbook go here later -->
-          </div>
-        </section>
+          data-include-html="scioly/section.html"
+        ></section>
 
         <section
           id="school"
           class="panel"
           role="tabpanel"
           aria-labelledby="tab-school"
-        >
-          <div class="panel-inner">
-            <h1 class="welcome-title">Welcome to my "School" page</h1>
-            <!-- Placeholder: “VSCode vibe” section goes here later -->
-          </div>
-        </section>
+          data-include-html="school/section.html"
+        ></section>
       </main>
 
       <nav class="top-nav" aria-label="Section tabs">
@@ -198,6 +156,16 @@
           </div>
         </div>
       </nav>
+
+      <!-- Art modal (lives outside panels so z-index/clicks are never blocked) -->
+      <div id="art-modal-overlay" class="art-modal" aria-hidden="true">
+        <div class="art-modal-backdrop"></div>
+        <div class="art-modal-dialog" role="dialog" aria-modal="true" aria-label="Art item">
+          <div class="art-modal-content">
+            <!-- Blank for now -->
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

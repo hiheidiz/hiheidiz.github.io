@@ -1,0 +1,7 @@
+#scioly {
+  background:
+    radial-gradient(circle at 14% 76%, rgba(115, 175, 215, 0.2), transparent 22%),
+    radial-gradient(circle at 84% 20%, rgba(170, 200, 235, 0.12), transparent 36%),
+    var(--panel-bg);
+}
+

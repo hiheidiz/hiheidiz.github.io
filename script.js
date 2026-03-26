@@ -9,6 +9,15 @@
   /** Preserve per-panel scroll position for a nice “instant switch” feel. */
   const scrollPositions = new Map();
 
+  function replayMusicTitleAnimation() {
+    const title = document.querySelector("[data-music-title]");
+    if (!title) return;
+    title.classList.remove("animate__animated", "animate__zoomIn");
+    // Force reflow so Animate.css can restart the same animation class.
+    void title.offsetWidth;
+    title.classList.add("animate__animated", "animate__zoomIn");
+  }
+
   function setActive(targetId, { updateHash } = { updateHash: true }) {
     const nextPanel = panelById.get(targetId);
     if (!nextPanel) return;
@@ -46,6 +55,12 @@
       if (location.hash !== newHash) {
         history.replaceState(null, "", newHash);
       }
+    }
+
+    if (targetId === "music") {
+      replayMusicTitleAnimation();
+      // In case music HTML is still being injected asynchronously.
+      setTimeout(replayMusicTitleAnimation, 60);
     }
   }
 
@@ -156,5 +171,45 @@
   }
 
   loadHtmlIncludes();
+
+  // --- Art modal: open / close via delegated clicks ---
+  const artModal = document.getElementById("art-modal-overlay");
+
+  function openArtModal() {
+    if (!artModal) return;
+    artModal.style.setProperty("--animate-duration", "0.5s");
+    artModal.classList.add("is-open", "animate__animated", "animate__fadeIn");
+    artModal.classList.remove("animate__fadeOut");
+    artModal.setAttribute("aria-hidden", "false");
+  }
+
+  function closeArtModal() {
+    if (!artModal || !artModal.classList.contains("is-open")) return;
+    artModal.style.setProperty("--animate-duration", "0.5s");
+    artModal.classList.remove("animate__fadeIn");
+    artModal.classList.add("animate__fadeOut");
+    artModal.setAttribute("aria-hidden", "true");
+    setTimeout(() => {
+      artModal.classList.remove("is-open", "animate__animated", "animate__fadeOut");
+    }, 110);
+  }
+
+  document.addEventListener("click", (e) => {
+    const trigger = e.target instanceof Element && e.target.closest("[data-open-modal]");
+    if (trigger) {
+      e.preventDefault();
+      openArtModal();
+      return;
+    }
+
+    if (artModal && artModal.classList.contains("is-open")) {
+      const clickedInside = e.target instanceof Element && e.target.closest(".art-modal-dialog");
+      if (!clickedInside) closeArtModal();
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeArtModal();
+  });
 })();
 
