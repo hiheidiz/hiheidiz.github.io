@@ -1,0 +1,283 @@
+@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Paytone+One&family=Poppins&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+
+:root {
+  color-scheme: dark;
+  --bg: #0B102E; /* main color */
+  --bg-dark: #070818;
+  --bg-mid: #121C4B;
+  --glow-cyan: rgba(125, 211, 255, 0.28);
+  --glow-blue: rgba(59, 130, 246, 0.18);
+  --glow-warm: rgba(251, 191, 36, 0.08);
+  /* Framework-only: keep panels visually invisible for now (no boxed rectangles). */
+  --panel-bg: transparent;
+  --text: #91BDEB;
+  --muted: rgba(145, 189, 235, 0.72);
+  --accent: #7dd3ff;
+  --accent2: #fbbf24;
+
+  /* Bottom nav height */
+  --nav-h: 120px;
+
+  --radius: 16px;
+
+  /* Default width for body text / main content columns */
+  --text-width: max(600px, 70%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-size: 18px;
+  font-family: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  background: var(--bg);
+  overflow: hidden; /* panels handle their own scrolling */
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Paytone One", Poppins, ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Helvetica, Arial;
+  letter-spacing: 0.2px;
+}
+
+.welcome-title {
+  font-family: "Cedarville Cursive", cursive;
+  color: #ffffff;
+  font-size: 25px;
+}
+
+.panel-inner a,
+main a {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+.app-shell {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  z-index: 1; /* keep content above the background canvas */
+}
+
+.panels {
+  position: absolute;
+  inset: var(--nav-h) 0 0 0;
+}
+
+.panel {
+  position: absolute;
+  inset: 0;
+  /* Keep vertical breathing room, but align horizontally with the nav scroller. */
+  padding: 30px 0;
+  overflow: auto;
+
+  background: var(--panel-bg);
+  border-radius: 0;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: opacity 160ms ease, visibility 160ms ease;
+}
+
+.panel.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.panel-inner,
+body > main {
+  width: var(--text-width);
+  max-width: 100%;
+  margin-inline: auto;
+  box-sizing: border-box;
+}
+
+/* Home: image shares left edge with nav column (.panel-inner / .top-nav-scroller same width). */
+.home-panel-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 80px;
+}
+
+.home-headshot {
+  flex-shrink: 0;
+  width: 220px;
+  max-width: min(220px, 32vw);
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.home-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.home-copy .welcome-title {
+  margin-top: 0;
+}
+
+@media (max-width: 720px) {
+  .home-panel-inner {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .home-headshot {
+    width: min(200px, 70vw);
+    max-width: 100%;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.top-nav {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* buttons re-enable below */
+}
+
+.top-nav-scroller {
+  width: max(600px, 70%);
+  display: flex;
+  gap: 0;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+  pointer-events: auto;
+}
+
+.top-nav-scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  padding: 6px 0;
+  font-family: "Paytone One", Poppins, ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Helvetica, Arial;
+  font-weight: 400;
+  letter-spacing: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.top-nav-left .tab {
+  font-size: 30px; /* or whatever you want */
+}
+
+.top-nav-left,
+.top-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.top-nav-right {
+  margin-left: auto; /* push the group to the right end */
+}
+
+.stars-toggle {
+  pointer-events: auto;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-family: "Paytone One", Poppins, ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Helvetica, Arial;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 6px 0;
+  cursor: pointer;
+}
+
+.stars-toggle:hover {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.stars-toggle[aria-pressed="false"] {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.tab:focus-visible {
+  outline: 2px solid rgba(125, 211, 255, 0.85);
+  outline-offset: 2px;
+}
+
+.tab.is-active {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.tab:hover {
+  color: rgba(145, 189, 235, 0.9);
+}
+
+/* Nav brand: "heyheyhey" only on hover/focus (hidden by default) */
+.nav-brand::after {
+  content: "  -  heyheyhey";
+  font-size: smaller;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+#tab-home:hover .nav-brand::after,
+#tab-home:focus-visible .nav-brand::after {
+  opacity: 1;
+}
+
+/* Headshot: Animate.css tada on hover (animate.min.css must be loaded) */
+.home-headshot:hover {
+  animation: tada 1s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel {
+    transition: none;
+  }
+
+  .home-headshot:hover {
+    animation: none !important;
+  }
+
+  .nav-brand::after {
+    content: none;
+  }
+}
+
