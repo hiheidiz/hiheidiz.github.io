@@ -44,7 +44,7 @@
     // 4-point star made from an 8-vertex "outer/inner" polygon.
     const rOuter = size / 3;
     const rInner = size / 8;
-
+a
     ctx.save();
     ctx.translate(x, y);
     ctx.rotate(rot);

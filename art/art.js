@@ -151,6 +151,29 @@
       }
     });
 
+    // Replace tile content with cover.jpg if the image exists in the project folder.
+    for (const item of items) {
+      const projectId = item.getAttribute("data-open-modal");
+      if (!projectId) continue;
+      const coverUrl = `artprojects/${projectId}/cover.jpg`;
+      const img = new Image();
+      img.src = coverUrl;
+      img.addEventListener("load", () => {
+        const inner = item.querySelector(".art-tile-inner");
+        if (!inner) return;
+
+        const tileH = parseFloat(getComputedStyle(item).getPropertyValue("--tile-h")) || 300;
+        const aspect = img.naturalWidth / img.naturalHeight;
+        item.style.setProperty("--tile-w", `${Math.round(tileH * aspect)}px`);
+
+        inner.classList.add("art-tile-inner--cover");
+        inner.innerHTML = "";
+        img.alt = projectId;
+        img.draggable = false;
+        inner.appendChild(img);
+      });
+    }
+
     setAngle(0);
   }
 
