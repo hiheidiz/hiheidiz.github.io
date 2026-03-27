@@ -158,6 +158,7 @@
       const coverUrl = `artprojects/${projectId}/cover.jpg`;
       const img = new Image();
       img.src = coverUrl;
+      const label = item.querySelector(".art-tile-inner span")?.textContent?.trim() || projectId;
       img.addEventListener("load", () => {
         const inner = item.querySelector(".art-tile-inner");
         if (!inner) return;
@@ -168,9 +169,14 @@
 
         inner.classList.add("art-tile-inner--cover");
         inner.innerHTML = "";
-        img.alt = projectId;
+        img.alt = label;
         img.draggable = false;
         inner.appendChild(img);
+
+        const caption = document.createElement("span");
+        caption.className = "art-tile-caption";
+        caption.textContent = label;
+        inner.appendChild(caption);
       });
     }
 

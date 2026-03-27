@@ -4,34 +4,22 @@
     radial-gradient(circle at 12% 62%, rgba(165, 140, 245, 0.2), transparent 50%),
     radial-gradient(circle at 84% 18%, rgba(145, 189, 235, 0.3), transparent 30%),
     var(--panel-bg);
+  overflow: hidden;
 }
 
 .art-carousel-fullbleed {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  padding-bottom: 2rem;
-  box-sizing: border-box;
-}
-
-.art-carousel-hint {
-  margin: 0 auto 0.75rem;
-  max-width: var(--text-width);
-  padding: 0 1rem;
-  font-size: 0.85rem;
-  color: var(--muted);
-  text-align: center;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   box-sizing: border-box;
 }
 
 .art-carousel-viewport {
-  position: relative;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: min(58vh, 560px);
-  min-height: 280px;
+  height: 100%;
   overflow: hidden;
   outline: none;
   touch-action: none;
@@ -113,13 +101,29 @@
   overflow: hidden;
 }
 
+.art-tile-inner--cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.art-tile-caption {
+  margin-top: 0.8rem;
+  font-family: "Roboto Mono", ui-monospace, monospace;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #ffffff;
+  text-align: center;
+}
+
 .art-tile-inner--cover img {
   width: 100%;
-  height: 100%;
+  flex: 1;
+  min-height: 0;
   object-fit: contain;
   border-radius: 8px;
   display: block;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.35));
 }
 
 @keyframes artTileFloat {

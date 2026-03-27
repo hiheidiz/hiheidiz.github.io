@@ -104,7 +104,7 @@
     const syncLabel = () => {
       const enabled = Boolean(window.__starsBg?.isEnabled?.());
       starsToggle.setAttribute("aria-pressed", String(enabled));
-      starsToggle.textContent = "✧";
+      starsToggle.textContent = enabled ? "✦" : "✧";
       starsToggle.setAttribute(
         "aria-label",
         enabled ? "Disable stars background" : "Enable stars background"
