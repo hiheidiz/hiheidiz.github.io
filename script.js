@@ -165,7 +165,9 @@
         if (el.id === "art") {
           window.__art?.initArtCarousel?.();
         }
-        // Music audio picker is handled by delegated JS above.
+        if (el.id === "scioly") {
+          window.__scioly?.initSciolyDrag?.();
+        }
       })
     );
   }
@@ -189,6 +191,7 @@
     artModal.classList.remove("animate__fadeIn");
     artModal.classList.add("animate__fadeOut");
     artModal.setAttribute("aria-hidden", "true");
+    document.querySelectorAll(".art-carousel-item.is-glowing").forEach((el) => el.classList.remove("is-glowing"));
     setTimeout(() => {
       artModal.classList.remove("is-open", "animate__animated", "animate__fadeOut");
     }, 110);
@@ -210,6 +213,23 @@
 
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeArtModal();
+  });
+
+  // --- SciOly timeline: click star to show corresponding box ---
+  document.addEventListener("click", (e) => {
+    const dot = e.target instanceof Element && e.target.closest("[data-scioly]");
+    if (!dot) return;
+
+    const id = dot.getAttribute("data-scioly");
+    const allDots = document.querySelectorAll("[data-scioly]");
+    const allBoxes = document.querySelectorAll("[data-scioly-box]");
+
+    allDots.forEach((d) => d.classList.toggle("is-active", d.getAttribute("data-scioly") === id && !d.classList.contains("is-active")));
+    allBoxes.forEach((b) => {
+      const match = b.getAttribute("data-scioly-box") === id;
+      const dotActive = dot.classList.contains("is-active");
+      b.classList.toggle("is-active", match && dotActive);
+    });
   });
 })();
 

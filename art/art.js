@@ -133,6 +133,10 @@
       const modal = document.getElementById("art-modal-overlay");
       if (!modal) return;
 
+      // Glow the clicked tile
+      items.forEach((it) => it.classList.remove("is-glowing"));
+      trigger.classList.add("is-glowing");
+
       const contentEl = modal.querySelector(".art-modal-content");
       if (contentEl) {
         contentEl.innerHTML = "<p style='text-align:center;padding:2rem;color:var(--muted)'>Loading…</p>";
