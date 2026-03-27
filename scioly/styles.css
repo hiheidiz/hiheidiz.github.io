@@ -94,9 +94,10 @@
 }
 
 .scioly-drop-target span {
-  font-family: "Roboto Mono", ui-monospace, monospace;
+  font-family: "Mynerve", cursive;
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.9);
+  font-weight: 700;
+  color: var(--dot-color);
 }
 
 .scioly-drop-target.is-occupied {

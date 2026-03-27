@@ -315,7 +315,7 @@
     const activeBox = document.querySelector(`[data-scioly-box="${id}"]`);
     if (!(activeBox instanceof HTMLElement)) return;
     activeBox.classList.add("is-active");
-    activeBox.innerHTML = '<div class="scioly-window"><p>Loading...</p></div>';
+    activeBox.innerHTML = '<div class="scioly-window"><p></p></div>';
 
     fetch(`scioly/windows/${id}.md`, { cache: "no-cache" })
       .then((res) => (res.ok ? res.text() : Promise.reject(res.status)))
