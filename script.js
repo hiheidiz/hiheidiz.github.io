@@ -216,20 +216,118 @@
   });
 
   // --- SciOly timeline: click star to show corresponding box ---
+  function escapeHtml(str) {
+    return String(str)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#39;");
+  }
+
+  function renderSimpleMarkdown(markdown) {
+    const lines = String(markdown).replaceAll("\r\n", "\n").split("\n");
+    const out = [];
+    let paragraph = [];
+    const listStack = [];
+
+    const flushParagraph = () => {
+      if (!paragraph.length) return;
+      out.push(`<p>${escapeHtml(paragraph.join(" "))}</p>`);
+      paragraph = [];
+    };
+
+    const closeListsToLevel = (targetLevel) => {
+      while (listStack.length > targetLevel) {
+        out.push("</ul>");
+        listStack.pop();
+      }
+    };
+
+    for (const rawLine of lines) {
+      const line = rawLine.replace(/\t/g, "  ");
+      const trimmed = line.trim();
+      if (!line) {
+        flushParagraph();
+        closeListsToLevel(0);
+        continue;
+      }
+      if (trimmed.startsWith("### ")) {
+        flushParagraph();
+        closeListsToLevel(0);
+        out.push(`<h3>${escapeHtml(trimmed.slice(4))}</h3>`);
+        continue;
+      }
+      if (trimmed.startsWith("## ")) {
+        flushParagraph();
+        closeListsToLevel(0);
+        out.push(`<h2>${escapeHtml(trimmed.slice(3))}</h2>`);
+        continue;
+      }
+      if (trimmed.startsWith("# ")) {
+        flushParagraph();
+        closeListsToLevel(0);
+        out.push(`<h1>${escapeHtml(trimmed.slice(2))}</h1>`);
+        continue;
+      }
+      const bullet = line.match(/^(\s*)[-*]\s+(.*)$/);
+      if (bullet) {
+        flushParagraph();
+        const indent = bullet[1].length;
+        const level = Math.floor(indent / 2) + 1;
+        const text = bullet[2];
+
+        while (listStack.length < level) {
+          out.push("<ul>");
+          listStack.push("ul");
+        }
+        closeListsToLevel(level);
+        out.push(`<li>${escapeHtml(text)}</li>`);
+        continue;
+      }
+
+      closeListsToLevel(0);
+      paragraph.push(trimmed);
+    }
+
+    flushParagraph();
+    closeListsToLevel(0);
+    return out.join("\n");
+  }
+
   document.addEventListener("click", (e) => {
-    const dot = e.target instanceof Element && e.target.closest("[data-scioly]");
+    const star = e.target instanceof Element && e.target.closest(".scioly-star");
+    if (!star) return;
+    const dot = star.closest("[data-scioly]");
     if (!dot) return;
 
     const id = dot.getAttribute("data-scioly");
     const allDots = document.querySelectorAll("[data-scioly]");
     const allBoxes = document.querySelectorAll("[data-scioly-box]");
 
-    allDots.forEach((d) => d.classList.toggle("is-active", d.getAttribute("data-scioly") === id && !d.classList.contains("is-active")));
-    allBoxes.forEach((b) => {
-      const match = b.getAttribute("data-scioly-box") === id;
-      const dotActive = dot.classList.contains("is-active");
-      b.classList.toggle("is-active", match && dotActive);
-    });
+    const shouldActivate = !dot.classList.contains("is-active");
+    allDots.forEach((d) =>
+      d.classList.toggle("is-active", shouldActivate && d.getAttribute("data-scioly") === id)
+    );
+    allBoxes.forEach((b) => b.classList.remove("is-active"));
+    if (!shouldActivate || !id) return;
+
+    const activeBox = document.querySelector(`[data-scioly-box="${id}"]`);
+    if (!(activeBox instanceof HTMLElement)) return;
+    activeBox.classList.add("is-active");
+    activeBox.innerHTML = '<div class="scioly-window"><p>Loading...</p></div>';
+
+    fetch(`scioly/windows/${id}.md`, { cache: "no-cache" })
+      .then((res) => (res.ok ? res.text() : Promise.reject(res.status)))
+      .then((markdown) => {
+        activeBox.innerHTML = `<div class="scioly-window">${renderSimpleMarkdown(markdown)}</div>`;
+      })
+      .catch(() => {
+        activeBox.innerHTML =
+          '<div class="scioly-window"><h2>Missing Content</h2><p>Add markdown at scioly/windows/' +
+          id +
+          '.md</p></div>';
+      });
   });
 })();
 

@@ -5,3 +5,222 @@
     var(--panel-bg);
 }
 
+.scioly-inner {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - var(--nav-h) - 60px);
+}
+
+.scioly-timeline {
+  position: relative;
+  margin-top: 0;
+  flex-shrink: 0;
+}
+
+.scioly-timeline-line {
+  position: absolute;
+  top: 1.65rem;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.scioly-timeline-dots {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0;
+}
+
+.scioly-dot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+}
+
+.scioly-dot:hover .scioly-star {
+  transform: scale(1.3);
+}
+
+.scioly-dot.is-active .scioly-star {
+  transform: scale(1.4);
+  filter: drop-shadow(0 0 6px var(--dot-color));
+}
+
+.scioly-timeline-dots.is-solved .scioly-star {
+  animation: sciolySolvedFlash 1.1s ease-in-out infinite;
+}
+
+.scioly-timeline-dots.is-solved .scioly-dot:nth-child(even) .scioly-star {
+  animation-delay: 0.55s;
+}
+
+.scioly-star {
+  font-size: 2.8rem;
+  line-height: 1;
+  color: var(--dot-color, #fff);
+  flex-shrink: 0;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+@keyframes sciolySolvedFlash {
+  0%,
+  100% {
+    opacity: 0.7;
+    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 9px var(--dot-color));
+  }
+}
+
+/* Drop target squares below each star */
+.scioly-drop-target {
+  width: 78px;
+  height: 78px;
+  display: grid;
+  place-items: center;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  margin-top: 0.1rem;
+  transition: border-color 0.2s ease;
+}
+
+.scioly-inner.is-dragging-mineral .scioly-drop-target {
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.scioly-drop-target span {
+  font-family: "Roboto Mono", ui-monospace, monospace;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.scioly-drop-target.is-occupied {
+  border-color: transparent;
+}
+
+.scioly-drop-target.is-occupied span {
+  opacity: 0;
+}
+
+.scioly-content-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+
+.scioly-box {
+  display: none;
+  width: 100%;
+  height: 350px;
+  border-radius: 12px;
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--box-color) 45%, transparent);
+  box-sizing: border-box;
+  padding: 2rem;
+  color: var(--text);
+  overflow: auto;
+}
+
+.scioly-box.is-active {
+  display: block;
+}
+
+.scioly-window h1,
+.scioly-window h2,
+.scioly-window h3 {
+  margin: 0 0 1.3rem;
+  text-align: center;
+  font-family: "Mynerve", cursive;
+  color: var(--box-color);
+}
+
+.scioly-window p {
+  margin: 0 0 0.8rem;
+  font-family: "Roboto Mono", ui-monospace, monospace;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.9rem;
+}
+
+.scioly-window ul {
+  margin: 0 0 0.9rem 1.25rem;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: "Roboto Mono", ui-monospace, monospace;
+  font-size: 0.8rem;
+}
+
+.scioly-window li {
+  margin: 0.15rem 0;
+}
+
+.scioly-minerals {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 12px;
+  min-height: 94px;
+  padding-bottom: 1rem;
+}
+
+.scioly-mineral {
+  width: 78px;
+  height: 78px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 6px;
+  background: rgba(145, 189, 235, 0.12);
+  font-family: "Roboto Mono", ui-monospace, monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.scioly-mineral img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  pointer-events: none;
+}
+
+.scioly-mineral:active {
+  cursor: grabbing;
+}
+
+.scioly-mineral.is-dragging {
+  position: fixed;
+  z-index: 300;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  cursor: grabbing;
+  transform: scale(1.08);
+  transition: none;
+}
+
+.scioly-mineral.is-snapped {
+  position: fixed;
+  z-index: 250;
+  cursor: grab;
+}
+
+.scioly-bottom-bar {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.scioly-bottom-bar .scioly-minerals {
+  justify-content: center;
+}
+

@@ -5,3 +5,7 @@
     var(--panel-bg);
 }
 
+#home .welcome-title {
+  color: #FFE0B4;
+}
+

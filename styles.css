@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Paytone+One&family=Poppins&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mynerve&family=Paytone+One&family=Poppins&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 @import url("./home/styles.css");
 @import url("./art/styles.css");
 @import url("./music/styles.css");
@@ -63,7 +63,7 @@ h3 {
 }
 
 .welcome-title {
-  font-family: "Cedarville Cursive", cursive;
+  font-family: "Mynerve", cursive;
   color: #ffffff;
   font-size: 25px;
 }
