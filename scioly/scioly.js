@@ -40,24 +40,36 @@
       "diamond",
     ];
 
+    function mineralMatchesSlot(placed, expected) {
+      return placed === expected || (expected === "gypsum" && placed === "selenite");
+    }
+
     function updateSolvedState() {
+      minerals.forEach((el) => el.classList.remove("is-wrong-slot"));
+
       let solved = true;
+      const misplaced = [];
+
       for (let i = 0; i < expectedOrder.length; i++) {
         const slotId = String(i + 1);
         const mineralEl = slotToMineral.get(slotId);
         if (!mineralEl) {
           solved = false;
-          break;
+          continue;
         }
         const placed = mineralEl.dataset.mineral;
         const expected = expectedOrder[i];
-        // Backward-compatible alias in case older dataset values remain.
-        const matches = placed === expected || (expected === "gypsum" && placed === "selenite");
-        if (!matches) {
+        if (!mineralMatchesSlot(placed, expected)) {
           solved = false;
-          break;
+          misplaced.push(mineralEl);
         }
       }
+
+      const allFilled = slotToMineral.size === expectedOrder.length;
+      if (allFilled && !solved) {
+        misplaced.forEach((el) => el.classList.add("is-wrong-slot"));
+      }
+
       timelineDots.classList.toggle("is-solved", solved);
     }
 

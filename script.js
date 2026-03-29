@@ -191,6 +191,7 @@
     artModal.classList.remove("animate__fadeIn");
     artModal.classList.add("animate__fadeOut");
     artModal.setAttribute("aria-hidden", "true");
+    window.__artSlideshow = null;
     document.querySelectorAll(".art-carousel-item.is-glowing").forEach((el) => el.classList.remove("is-glowing"));
     setTimeout(() => {
       artModal.classList.remove("is-open", "animate__animated", "animate__fadeOut");
@@ -231,9 +232,21 @@
     let paragraph = [];
     const listStack = [];
 
+    const linkifyHttps = (plain) =>
+      plain
+        .split(/(https?:\/\/\S+)/)
+        .map((part) => {
+          if (/^https?:\/\//.test(part)) {
+            const safe = escapeHtml(part);
+            return `<a href="${safe}" target="_blank" rel="noopener noreferrer">${safe}</a>`;
+          }
+          return escapeHtml(part);
+        })
+        .join("");
+
     const flushParagraph = () => {
       if (!paragraph.length) return;
-      out.push(`<p>${escapeHtml(paragraph.join(" "))}</p>`);
+      out.push(`<p>${linkifyHttps(paragraph.join(" "))}</p>`);
       paragraph = [];
     };
 
@@ -294,6 +307,9 @@
     closeListsToLevel(0);
     return out.join("\n");
   }
+
+  window.__app = window.__app || {};
+  window.__app.renderSimpleMarkdown = renderSimpleMarkdown;
 
   document.addEventListener("click", (e) => {
     const star = e.target instanceof Element && e.target.closest(".scioly-star");

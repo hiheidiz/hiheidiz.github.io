@@ -167,7 +167,7 @@
 .art-modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(4, 8, 24, 0.58);
+  background: transparent;
 }
 
 .art-modal-dialog {
@@ -175,20 +175,219 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: min(72vw, 640px);
-  max-height: min(80vh, 640px);
-  overflow-y: auto;
+  width: min(92vw, 1020px);
+  height: min(500px, calc(100vh - 2rem));
+  max-height: 500px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
 .art-modal-content {
   width: 100%;
-  min-height: 200px;
+  flex: 1 1 auto;
+  min-height: 0;
   border-radius: 12px;
   background: rgba(9, 18, 46, 0.94);
   border: 1px solid rgba(145, 189, 235, 0.45);
-  padding: 2rem;
+  padding: 1.75rem 1.5rem 1.5rem;
   box-sizing: border-box;
   color: var(--text);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Art project modal: markdown + slideshow --- */
+.art-project-modal {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.art-project-modal__title {
+  flex-shrink: 0;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0.85rem;
+}
+
+.art-project-modal__title.scioly-window h1,
+.art-project-modal__title.scioly-window h2,
+.art-project-modal__title.scioly-window h3 {
+  margin: 0;
+  text-align: center;
+  color: var(--text);
+}
+
+.art-project-modal__cols {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 0;
+  row-gap: 1rem;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.art-project-modal__text {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.art-project-modal__markdown.scioly-window h1,
+.art-project-modal__markdown.scioly-window h2,
+.art-project-modal__markdown.scioly-window h3 {
+  color: var(--text);
+  text-align: left;
+}
+
+.art-project-modal__gallery {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-left: 1.25rem;
+  padding-top: 0.95rem;
+  padding-bottom: 0.95rem;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.art-project-modal__gallery::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.1rem;
+  bottom: 1.1rem;
+  width: 1px;
+  background: rgba(145, 189, 235, 0.38);
+}
+
+.art-project-slideshow {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.art-project-slideshow__frame {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.art-project-slideshow--empty {
+  flex: 1 1 auto;
+  min-height: 0;
+  justify-content: center;
+}
+
+.art-project-slideshow--empty p {
+  margin: 0;
+  font-family: "Roboto Mono", ui-monospace, monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.art-project-slideshow--empty code {
+  font-size: 0.8em;
+  color: #ffe0b4;
+}
+
+.art-project-slideshow__img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0;
+  background: transparent;
+  display: block;
+}
+
+.art-project-slideshow__caption {
+  flex-shrink: 0;
+  margin: 0;
+  font-family: "Roboto Mono", ui-monospace, monospace;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+}
+
+.art-project-slideshow__nav {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.art-project-slideshow__btn {
+  font-family: "Paytone One", system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0.35rem 0.65rem;
+  border-radius: 8px;
+  border: 1px solid rgba(145, 189, 235, 0.5);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.art-project-slideshow__btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.art-project-slideshow__counter {
+  font-family: "Roboto Mono", ui-monospace, monospace;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.75);
+  min-width: 4.5rem;
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  .art-project-modal__cols {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .art-project-modal__gallery {
+    min-height: 0;
+    padding-left: 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .art-project-modal__gallery::before {
+    left: 0;
+    right: 0;
+    top: 0.65rem;
+    bottom: auto;
+    width: auto;
+    height: 1px;
+  }
 }
 
 /* --- Project content inside modal --- */
